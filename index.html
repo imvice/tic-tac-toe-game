@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="style.css" />
+		<title>Tic Tac Toe</title>
+	</head>
+	<body>
+		<div id="container">
+			<h1>Tic Tac Toe Game!</h1>
+			<h2 id="turn">P1's turn</h2>
+			<h4 id="info">
+				Playing vs Computer, press the 'Gamemode' to change to 2 players.
+			</h4>
+			<div id="playerWrapper">
+				<div class="players-score" id="player1Display">P1 Score: 0</div>
+				<div class="players-score" id="player2Display">Computer Score: 0</div>
+			</div>
+			<div id="board">
+				<div class="row">
+					<div class="cell"></div>
+					<div class="cell"></div>
+					<div class="cell"></div>
+				</div>
+				<div class="row">
+					<div class="cell"></div>
+					<div class="cell"></div>
+					<div class="cell"></div>
+				</div>
+				<div class="row">
+					<div class="cell"></div>
+					<div class="cell"></div>
+					<div class="cell"></div>
+				</div>
+			</div>
+			<div class="btnDiv">
+				<button id="playAgainBtn" class="btn">Play Again</button>
+				<button id="restartBtn" class="btn">Restart</button>
+				<button id="gamemodeBtn" class="btn">Gamemode</button>
+			</div>
+		</div>
+
+		<script src="script.js"></script>
+	</body>
+</html>
