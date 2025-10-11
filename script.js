@@ -113,6 +113,10 @@ const computerMove = () => {
 
 	doMove(rowIndex, colIndex, cell);
 	isPlayerTurn = true;
+
+	// clear icon hover effect after computer plays
+	const cells = document.querySelectorAll('.cell');
+	cells.forEach(cell => (cell.style.backgroundImage = ''));
 };
 
 const invalidMove = () => {
@@ -125,7 +129,7 @@ const invalidMove = () => {
 
 const switchTurn = () => {
 	currentTurn = currentTurn === player1 ? player2 : player1;
-	setTurn(`${currentTurn}'s turn`, 'var(--text-white)');
+	setTurn(`${currentTurn}’s turn`, 'var(--text-white)');
 };
 
 const checkWinner = () => {
@@ -158,7 +162,7 @@ const handleWin = ({ winner, winCombo }) => {
 
 const handleTie = () => {
 	isGameOver = true;
-	setTurn("It's a tie! 🤝", 'var(--cyan-500)');
+	setTurn('It’s a tie! 🤝', 'var(--cyan-500)');
 
 	// fade icons when game is tied
 	const cells = document.querySelectorAll('.cell');
@@ -227,14 +231,40 @@ const playAgain = () => {
 	currentTurn = player1;
 	isPlayerTurn = true;
 
-	setTurn(`${currentTurn}'s turn`, 'var(--text-white)');
+	setTurn(`${currentTurn}’s turn`, 'var(--text-white)');
 	setInfo(
 		vsComputer
-			? `Playing vs Computer, press the 'Gamemode' to change to 2 players.`
+			? `Playing vs Computer, press the 'Gamemode' button to play as 2 players.`
 			: `Playing 2 Players, press the 'Gamemode' button to play vs Computer.`
 	);
 };
 playAgainBtn.addEventListener('click', playAgain);
+
+// adding a hover effect on cells to display a preview of the player's icon
+const board = document.getElementById('board');
+
+board.addEventListener('mouseover', event => {
+	const cell = event.target.closest('.cell');
+	if (!cell) return;
+
+	const row = cell.parentElement;
+	const rowIndex = getRowIndex(row);
+	const colIndex = getColIndex(cell, row);
+
+	if (arr[rowIndex][colIndex] === null && !isGameOver) {
+		cell.style.backgroundImage =
+			currentTurn === player1 ? 'url(./icons/xicon.svg)' : 'url(./icons/oicon.svg';
+		cell.style.backgroundRepeat = 'no-repeat';
+		cell.style.backgroundPosition = 'center';
+	}
+});
+
+board.addEventListener('mouseout', event => {
+	const cell = event.target.closest('.cell');
+	if (!cell) return;
+
+	cell.style.backgroundImage = '';
+});
 
 // helper function that changes the turn's text content and color accordingly
 const setTurn = (text, color) => {
