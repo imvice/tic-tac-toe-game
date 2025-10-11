@@ -78,6 +78,7 @@ h4 {
 .row {
 	display: flex;
 	border-bottom: 4px solid var(--border-dark);
+	box-sizing: content-box;
 }
 
 .row:last-child {
@@ -93,6 +94,7 @@ h4 {
 	font-size: 3rem;
 	cursor: pointer;
 	transition: filter 0.3s ease;
+	box-sizing: content-box;
 }
 
 .cell:hover {
@@ -102,6 +104,15 @@ h4 {
 .cell:nth-of-type(2) {
 	border-left: 4px solid var(--border-dark);
 	border-right: 4px solid var(--border-dark);
+}
+
+.cell svg {
+	width: 75%;
+	height: 75%;
+}
+
+.cell .lucide-x {
+	scale: 1.4; /* make X larger to fit circle size */
 }
 
 .winner svg {
@@ -134,4 +145,62 @@ h4 {
 .btn:hover {
 	background: var(--btn-bg-dark-hover);
 	box-shadow: 0 0 5px var(--cyan-400);
+}
+
+@media (max-width: 600px) {
+	body {
+		transform: translateY(0);
+		padding: 1rem;
+		background-image: none;
+		background-color: var(--bg-dark);
+	}
+
+	h1 {
+		font-size: 1.5rem;
+	}
+
+	h2 {
+		font-size: 1.25rem;
+	}
+
+	#playerWrapper {
+		flex-direction: column;
+		gap: 1.5rem;
+		margin-bottom: 2rem;
+	}
+
+	#playerWrapper div {
+		min-width: auto;
+		width: 100%;
+		text-align: center;
+	}
+
+	.row {
+		border-bottom: 2px solid var(--border-dark);
+		box-sizing: content-box;
+	}
+
+	.cell {
+		width: 90px;
+		height: 90px;
+		font-size: 2rem;
+		box-sizing: content-box;
+	}
+
+	.cell:nth-of-type(2) {
+		border-left: 2px solid var(--border-dark);
+		border-right: 2px solid var(--border-dark);
+	}
+
+	.btnDiv {
+		flex-direction: column;
+		gap: 0.8rem;
+		width: 100%;
+		align-items: center;
+	}
+
+	.btn {
+		width: 80%;
+		font-size: 1rem;
+	}
 }
