@@ -256,7 +256,7 @@ board.addEventListener('mouseover', event => {
 
 	if (arr[rowIndex][colIndex] === null && !isGameOver) {
 		cell.style.backgroundImage =
-			currentTurn === player1 ? 'url(./icons/xicon.svg)' : 'url(./icons/oicon.svg';
+			currentTurn === player1 ? 'url(./icons/xicon.svg)' : 'url(./icons/oicon.svg)';
 		cell.style.backgroundRepeat = 'no-repeat';
 		cell.style.backgroundPosition = 'center';
 	}
